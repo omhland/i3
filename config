@@ -52,9 +52,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+slas exec dmenu_run
+bindsym $mod+t exec dmenu_run
 bindsym $mod+g exec google-chrome-stable 
-bindsym $mod+t exec gnome-terminal --command ranger  
+bindsym $mod+mod5+"slash" exec gnome-terminal --command ranger  
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -84,8 +84,11 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+mod5+0 workspace next
-bindsym $mod+mod5+7 workspace prev
+#bindsym $mod+mod5+0 workspace next
+#bindsym $mod+mod5+7 workspace prev
+bindsym $mod+mod5+"apostrophe" workspace next
+bindsym $mod+mod5+"space" workspace prev
+
 
 # split in horizontal orientation
 bindsym $mod+h split h
