@@ -3,7 +3,6 @@
 exec_always ~/.config/bash/monitor.sh
 exec_always ~/.config/attentionPath/i3_launch_manager.sh
 
-
 #Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 
@@ -13,9 +12,8 @@ exec_always ~/.config/attentionPath/i3_launch_manager.sh
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-
-
 bindsym $mod+Shift+Q exec ~/attentionPath/i3_personal_launch_manager.sh
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
@@ -23,6 +21,7 @@ font pango:monospace 8
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #fnont pango:DejaVu Sans Mono 8
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -45,14 +44,15 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
+
 bindsym $mod+Shift+c exec i3-sensible-terminal
 bindsym $mod+space exec alacritty
-
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
+
 bindsym $mod+"slash" exec dmenu_run
 bindsym $mod+g exec google-chrome-stable --args --new-window https://tmuxcheatsheet.com
 bindsym $mod+Shift+Y exec alacritty -e tmux attach
@@ -101,6 +101,23 @@ bindsym $mod+l workspace prev
 # split in horizontal orientation
 bindsym $mod+h split toggle
 
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+#bindsym $mod+mod5+0 workspace next
+#bindsym $mod+mod5+7 workspace prev
+bindsym $mod+mod5+"apostrophe" workspace next
+bindsym $mod+mod5+"space" workspace prev
+
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+
 # split in vertical orientation
 bindsym $mod+v split v
 
@@ -109,6 +126,7 @@ bindsym $mod+v split v
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+r layout stacking
+
 bindsym $mod+Shift+J  layout toggle stacked and tabbed 
 bindsym $mod+Shift+h  layout toggle split h and split v 
 bindsym $mod+j layout toggle stacked and split
@@ -136,6 +154,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
+
 bindsym $mod+a workspace number $ws1
 bindsym $mod+r workspace number $ws2
 bindsym $mod+s workspace number $ws3
@@ -158,6 +177,29 @@ bindsym $mod+Shift+P restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+j workspace number $ws1
+bindsym $mod+l workspace number $ws2
+bindsym $mod+u workspace number $ws3
+bindsym $mod+y workspace number $ws4
+bindsym $mod+";" workspace number $ws5
+
+
+# move focused container to workspace
+bindsym $mod+Shift+j move container to workspace number $ws1
+bindsym $mod+Shift+l move container to workspace number $ws2
+bindsym $mod+Shift+u move container to workspace number $ws3
+bindsym $mod+Shift+y move container to workspace number $ws4
+bindsym $mod+Shift+";" move container to workspace number $ws5
+
+
+# reload the configuration file
+bindsym $mod+r reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+P restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+F exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -166,6 +208,7 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
+
         bindsym o resize shrink width 10 px or 10 ppt
         bindsym e resize grow height 10 px or 10 ppt
         bindsym i resize shrink height 10 px or 10 ppt
@@ -180,6 +223,7 @@ mode "resize" {
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
+
         bindsym $mod+"grave" mode "default"
 }
 
@@ -189,6 +233,7 @@ bindsym $mod+"grave" mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+
 	font 15
 colors {
 	focused_workspace  #dfff00 #dfff00 ##00005fe
